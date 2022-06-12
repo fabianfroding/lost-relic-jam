@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 19517ed1e69ad9c4e828e855232493f9
+  - enabled: 1
+    path: Assets/Scenes/BarrelExplosion.unity
+    guid: 3b67797851007214c86bc3c1d0cf80c0
   m_configObjects: {}
