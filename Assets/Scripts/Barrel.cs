@@ -4,18 +4,54 @@ using UnityEngine;
 
 public class Barrel : MonoBehaviour
 {
+    private SpriteRenderer spriteRenderer;
+
     public float impactField;
     public float force;
     public LayerMask explosionLayer;
     public GameObject explosionPrefab;
     public GameObject deathSoundPrefab;
 
+    public bool isSelected;
+
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+    private void Start()
+    {
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+    }
+
+    public void Explosion()
+    {
+        Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position, impactField, explosionLayer);
+        foreach (Collider2D obj in objects)
         {
-            Explosion();
+            Vector2 dir = obj.transform.position - transform.position;
+            obj.GetComponent<Rigidbody2D>().AddForce(dir * force, ForceMode2D.Impulse);
+            if (explosionPrefab != null)
+            {
+                Instantiate(explosionPrefab, transform.position, transform.rotation);
+            }
         }
+        Destroy(gameObject);
+        InstantiateVisuals();
+    }
+
+    public void SetSelected()
+    {
+        spriteRenderer.material.color = Color.red;
+        isSelected = true;
+    }
+
+    public void SetDeselect()
+    {
+        spriteRenderer.material.color = Color.white;
+        isSelected = false;
     }
 
     private void OnDrawGizmosSelected()
@@ -24,18 +60,6 @@ public class Barrel : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, impactField);
     }
 
-    private void Explosion()
-    {
-        Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position, impactField, explosionLayer);
-        foreach (Collider2D obj in objects)
-        {
-            Vector2 dir = obj.transform.position - transform.position;
-            obj.GetComponent<Rigidbody2D>().AddForce(dir * force, ForceMode2D.Impulse);
-        }
-        Destroy(gameObject);
-
-        InstantiateVisuals();
-    }
 
     private void InstantiateVisuals()
     {
@@ -50,4 +74,26 @@ public class Barrel : MonoBehaviour
             explosion.transform.position = transform.position;
         }
     }
+
+    private void OnMouseEnter()
+    {
+        spriteRenderer.material.color = Color.cyan;
+    }
+
+    private void OnMouseExit()
+    {
+        if (!isSelected)
+        {
+            spriteRenderer.material.color = Color.white;
+        }
+        else if (isSelected)
+        {
+            spriteRenderer.material.color = Color.red;
+        }
+    }
+
+    // private void OnDestroy()
+    // {
+   
+    // }
 }
