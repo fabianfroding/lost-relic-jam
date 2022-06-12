@@ -316,9 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaaaa69cc8ea2b14885b1641b4d712cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 1732626821}
-  detectionBoxSize: {x: 0.2, y: 0.2}
-  rotationAngle: 0
+  cam: {fileID: 1732626821}
   selectedBarrel: {fileID: 0}
 --- !u!1 &560930504
 GameObject:
