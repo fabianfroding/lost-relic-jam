@@ -8,8 +8,10 @@ public class InputManager : MonoBehaviour
     public static InputManager Instance; // singleton
 
     public bool isStartExplode { get; private set; }
+    public bool isLeftMouseDown { get; private set; }
 
     public static event Action OnStartExplode;
+    public static event Action OnLeftMouseDown;
 
     private void Awake()
     {
@@ -19,11 +21,17 @@ public class InputManager : MonoBehaviour
     private void Update()
     {
         GetStartExplode();
+        GetLeftMouseDown();
     }
 
     private void GetStartExplode()
     {
         isStartExplode = Input.GetKeyDown(KeyCode.Space);
         if (isStartExplode == true) { OnStartExplode?.Invoke(); }
+    }
+    private void GetLeftMouseDown()
+    {
+        isLeftMouseDown = Input.GetMouseButtonDown(0);
+        if (isLeftMouseDown == true) { OnLeftMouseDown?.Invoke(); }
     }
 }
