@@ -4,8 +4,6 @@ using UnityEngine;
 public class BarrelSelect : MonoBehaviour 
 {
     public Camera camera;
-    public Vector2 detectionBoxSize = new Vector2(0.2f, 0.2f);
-    public float rotationAngle = 0;
 
     public GameObject selectedBarrel;
 
