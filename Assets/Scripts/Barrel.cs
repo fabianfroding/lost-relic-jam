@@ -31,12 +31,8 @@ public class Barrel : MonoBehaviour
         {
             Vector2 dir = obj.transform.position - transform.position;
             obj.GetComponent<Rigidbody2D>().AddForce(dir * force, ForceMode2D.Impulse);
-            if (explosionPrefab != null)
-            {
-                Instantiate(explosionPrefab, transform.position, transform.rotation);
-            }
-            Destroy(gameObject);
         }
+        Destroy(gameObject);
 
         InstantiateVisuals();
     }
@@ -46,6 +42,12 @@ public class Barrel : MonoBehaviour
         if (deathSoundPrefab != null)
         {
             Instantiate(deathSoundPrefab);
+        }
+
+        if (explosionPrefab != null)
+        {
+            GameObject explosion = Instantiate(explosionPrefab);
+            explosion.transform.position = transform.position;
         }
     }
 }
