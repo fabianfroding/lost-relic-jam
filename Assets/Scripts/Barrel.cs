@@ -8,14 +8,8 @@ public class Barrel : MonoBehaviour
     public float force;
     public LayerMask explosionLayer;
     public GameObject explosionPrefab;
+    public GameObject deathSoundPrefab;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -24,10 +18,16 @@ public class Barrel : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, impactField);
+    }
+
     private void Explosion()
     {
         Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position, impactField, explosionLayer);
-        foreach(Collider2D obj in objects)
+        foreach (Collider2D obj in objects)
         {
             Vector2 dir = obj.transform.position - transform.position;
             obj.GetComponent<Rigidbody2D>().AddForce(dir * force, ForceMode2D.Impulse);
@@ -37,11 +37,15 @@ public class Barrel : MonoBehaviour
             }
             Destroy(gameObject);
         }
+
+        InstantiateVisuals();
     }
 
-    private void OnDrawGizmosSelected()
+    private void InstantiateVisuals()
     {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, impactField);
+        if (deathSoundPrefab != null)
+        {
+            Instantiate(deathSoundPrefab);
+        }
     }
 }
