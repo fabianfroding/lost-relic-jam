@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BarrelSelect : MonoBehaviour 
 {
-    public Camera camera;
+    public Camera cam;
 
     public GameObject selectedBarrel;
 
@@ -33,8 +33,8 @@ public class BarrelSelect : MonoBehaviour
     {
         
         Vector3 mousePosition = Input.mousePosition;
-        mousePosition.z = camera.nearClipPlane;
-        Vector2 mouseWorldPosition = camera.ScreenToWorldPoint(mousePosition);
+        mousePosition.z = cam.nearClipPlane;
+        Vector2 mouseWorldPosition = cam.ScreenToWorldPoint(mousePosition);
 
         // OverlapBox checks if there is collider overlapping box created
         Collider2D detectedObject = Physics2D.OverlapPoint(mouseWorldPosition);
