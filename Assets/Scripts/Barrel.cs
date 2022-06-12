@@ -67,6 +67,12 @@ public class Barrel : MonoBehaviour
         {
             Instantiate(deathSoundPrefab);
         }
+
+        if (explosionPrefab != null)
+        {
+            GameObject explosion = Instantiate(explosionPrefab);
+            explosion.transform.position = transform.position;
+        }
     }
 
     private void OnMouseEnter()

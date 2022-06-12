@@ -141,5 +141,5 @@ MonoBehaviour:
   explosionLayer:
     serializedVersion: 2
     m_Bits: 128
-  explosionPrefab: {fileID: 0}
+  explosionPrefab: {fileID: 5324220105511690975, guid: 0a16f93bd292a1649b1c35b155ba51e2, type: 3}
   deathSoundPrefab: {fileID: 603580818877163831, guid: f39c77aa05fc39c45a8d3f87c702fb79, type: 3}
