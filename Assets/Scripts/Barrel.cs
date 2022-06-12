@@ -10,12 +10,13 @@ public class Barrel : MonoBehaviour
     public GameObject explosionPrefab;
     public GameObject deathSoundPrefab;
 
+    private void Start()
+    {
+        InputManager.OnStartExplode += Explosion;
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Explosion();
-        }
     }
 
     private void OnDrawGizmosSelected()
@@ -35,9 +36,8 @@ public class Barrel : MonoBehaviour
             {
                 Instantiate(explosionPrefab, transform.position, transform.rotation);
             }
-            Destroy(gameObject);
         }
-
+        Destroy(gameObject);
         InstantiateVisuals();
     }
 
@@ -47,5 +47,10 @@ public class Barrel : MonoBehaviour
         {
             Instantiate(deathSoundPrefab);
         }
+    }
+
+    private void OnDestroy()
+    {
+        InputManager.OnStartExplode -= Explosion;
     }
 }
