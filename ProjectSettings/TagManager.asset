@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Barrel
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -50,4 +51,7 @@ TagManager:
     locked: 0
   - name: Objects
     uniqueID: 2993283803
+    locked: 0
+  - name: Env
+    uniqueID: 3257187255
     locked: 0
