@@ -33,8 +33,6 @@ public class Barrel : MonoBehaviour
     {
         ExplodeCountdown();
         CheckRbInterpolation();
-
-
     }
 
     public void Explosion()
@@ -51,10 +49,14 @@ public class Barrel : MonoBehaviour
             // if affected object is a barrel, explode it too
             if (obj.gameObject.CompareTag("Barrel") && obj.gameObject != this.gameObject)
             {
+                Barrel affectedBarrel = obj.GetComponent<Barrel>();
                 // does not explode itself again
-                if (obj.GetComponent<Barrel>() != null)
+                if (affectedBarrel != null)
                 {
-                    obj.GetComponent<Barrel>().BeginExplode();
+                    if (!affectedBarrel.isExploding)
+                    {
+                        obj.GetComponent<Barrel>().BeginExplode();
+                    }
                 }
             }
         }
@@ -97,10 +99,13 @@ public class Barrel : MonoBehaviour
 
     private void CheckRbInterpolation()
     {
-        if (rb.velocity.magnitude > 80)
+        if (rb.velocity.magnitude > 40)
         {
             // continuous more expensive, use to prevent phasing through walls
             rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+        }
+        else {
+            rb.collisionDetectionMode = CollisionDetectionMode2D.Discrete;
         }
     }
 
