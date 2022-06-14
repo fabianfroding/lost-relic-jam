@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3016018574883851718}
   m_Layer: 8
   m_Name: Shroom
-  m_TagString: Untagged
+  m_TagString: Barrel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,8 +100,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 0.5
+  m_AngularDrag: 0.3
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -138,9 +138,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   impactField: 3.29
   force: 100
-  explosionLayer:
+  impactLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384
   explosionPrefab: {fileID: 5324220105511690975, guid: 0a16f93bd292a1649b1c35b155ba51e2, type: 3}
   deathSoundPrefab: {fileID: 603580818877163831, guid: f39c77aa05fc39c45a8d3f87c702fb79, type: 3}
   isSelected: 0
+  explodeTimer: 0
