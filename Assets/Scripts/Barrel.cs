@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Barrel : MonoBehaviour
@@ -9,103 +8,86 @@ public class Barrel : MonoBehaviour
 
     public float impactField;
     public float force;
-    public LayerMask impactLayer;
     public GameObject explosionPrefab;
     public GameObject deathSoundPrefab;
 
     public bool isSelected;
-
-    private const float explodeDelay = 2f;
-    private bool isExploding;
-    [SerializeField] private float explodeTimer;
+    [SerializeField] private float explodeDelay = 0.3f;
 
     //Enemy, damage and score vars
     public int damage = 5;
-    Enemy enemy;
     public GameManager gameManager;
 
+    #region Unity Callback Functions
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Start()
+    private void OnDestroy()
     {
-        enemy = GetComponent<Enemy>();
-    }
-
-    void Update()
-    {
-        ExplodeCountdown();
-        CheckRbInterpolation();
-    }
-
-    public void Explosion()
-    {
-        Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position, impactField, impactLayer);
+        Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position, impactField);
         foreach (Collider2D obj in objects)
         {
-            Vector2 dir = obj.transform.position - transform.position;
-            obj.GetComponent<Rigidbody2D>().AddForce(dir * force, ForceMode2D.Impulse);
-
-
-            // set score + damage to enemies
-           
-            if (obj.gameObject.CompareTag("Enemy"))
+            if (obj.CompareTag(EditorConstants.TAG_ENEMY))
             {
-                Debug.Log("Damage: " + damage);
+                Vector2 dir = obj.transform.position - transform.position;
+                obj.GetComponent<Rigidbody2D>().AddForce(dir * force, ForceMode2D.Impulse);
+                //Debug.Log("Damage: " + damage);
                 obj.GetComponent<Enemy>().Hit(damage);
                 SetScore.scoreValue += damage;
             }
 
-            if (explosionPrefab != null)
-            {
-                Instantiate(explosionPrefab, transform.position, transform.rotation);
-            }
             // if affected object is a barrel, explode it too
-            if (obj.gameObject.CompareTag("Barrel") && obj.gameObject != this.gameObject)
+            if (obj.gameObject.CompareTag(EditorConstants.TAG_EXPLOSIVE) && obj.gameObject != this.gameObject)
             {
-                Barrel affectedBarrel = obj.GetComponent<Barrel>();
-                // does not explode itself again
-                if (affectedBarrel != null)
-                {
-                    if (!affectedBarrel.isExploding)
-                    {
-                        obj.GetComponent<Barrel>().BeginExplode();
-                    }
-                }
+                obj.GetComponent<Barrel>().Explode();
             }
 
         }
         //JUST FOR TEST!!! IT SHOULD BE -- WHEN PLACING SHROOMS - remaining placeable shroom count
-        SetShroomNr.shroomNr -= 1;
+        //SetShroomNr.shroomNr -= 1;
         //SAME
-        gameManager.Win();
+        //gameManager.Win();
 
-        Destroy(gameObject);
         InstantiateVisuals();
     }
 
-    public void BeginExplode()
+    private void OnMouseEnter()
     {
-        isExploding = true;
-        explodeTimer = explodeDelay;
-        Debug.Log("Beginning Explosion");
+        spriteRenderer.material.color = Color.cyan;
     }
 
-    // terrible naming yes ik
-    private void ExplodeCountdown()
+    private void OnMouseExit()
     {
-        // if affected by impact, explode in 2 secs
-        if (isExploding)
+        if (!isSelected)
         {
-            explodeTimer -= Time.deltaTime;
-            if (explodeTimer <= 0)
-            {
-                Explosion();
-            }
+            spriteRenderer.material.color = Color.white;
         }
+        else if (isSelected)
+        {
+            spriteRenderer.material.color = Color.red;
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, impactField);
+    }
+    #endregion
+
+    public void Explode()
+    {
+        StopCoroutine(ExplodeDelayed());
+        StartCoroutine(ExplodeDelayed());
+    }
+
+    private IEnumerator ExplodeDelayed()
+    {
+        yield return new WaitForSeconds(explodeDelay);
+        Destroy(gameObject);
     }
 
     public void SetSelected()
@@ -132,13 +114,6 @@ public class Barrel : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, impactField);
-    }
-
-
     private void InstantiateVisuals()
     {
         if (deathSoundPrefab != null)
@@ -152,26 +127,4 @@ public class Barrel : MonoBehaviour
             explosion.transform.position = transform.position;
         }
     }
-
-    private void OnMouseEnter()
-    {
-        spriteRenderer.material.color = Color.cyan;
-    }
-
-    private void OnMouseExit()
-    {
-        if (!isSelected)
-        {
-            spriteRenderer.material.color = Color.white;
-        }
-        else if (isSelected)
-        {
-            spriteRenderer.material.color = Color.red;
-        }
-    }
-
-    // private void OnDestroy()
-    // {
-   
-    // }
 }

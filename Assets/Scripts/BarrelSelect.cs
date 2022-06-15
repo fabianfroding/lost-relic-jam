@@ -22,7 +22,7 @@ public class BarrelSelect : MonoBehaviour
     {
         if (selectedBarrel != null)
         {
-            selectedBarrel.GetComponent<Barrel>().Explosion();
+            Destroy(selectedBarrel);
         }
         else {
             Debug.Log("no selected barrel!");
