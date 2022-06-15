@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,10 @@ public class Enemy : MonoBehaviour
 
     public int damage = 5;
     public float distance;
+
+    [SerializeField] private int scoreYield = 1;
+
+    public static event Action<int> OnEnemyDeath;
 
     public int Health
     {
@@ -42,6 +47,7 @@ public class Enemy : MonoBehaviour
 
     public void KillEnemy()
     {
+        OnEnemyDeath?.Invoke(scoreYield);
         Destroy(gameObject);
     }
 
