@@ -41,16 +41,16 @@ public class BarrelSelect : MonoBehaviour
 
         if (detectedObject)
         {
-            if (detectedObject.GetComponent<Barrel>() != null)
+            if (detectedObject.GetComponent<Explosive>() != null)
             {
                 // deselect previous
                 if (selectedBarrel != null)
                 {
-                    selectedBarrel.GetComponent<Barrel>().SetDeselect();
+                    selectedBarrel.GetComponent<Explosive>().SetDeselect();
                 }
                 // select new
                 selectedBarrel = detectedObject.transform.gameObject;
-                selectedBarrel.GetComponent<Barrel>().SetSelected();
+                selectedBarrel.GetComponent<Explosive>().SetSelected();
             }
         }
         

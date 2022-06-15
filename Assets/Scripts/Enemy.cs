@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
-    Barrel barrel;
+    Explosive barrel;
 
     public int StartHealth = 100;
     [SerializeField]
@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         Health = StartHealth;
-        barrel = GetComponent<Barrel>();
+        barrel = GetComponent<Explosive>();
     }
 
     public void KillEnemy()
