@@ -138,10 +138,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barrel: {fileID: 0}
-  StartHealth: 100
+  StartHealth: 10
   health: 47
   damage: 5
   distance: 0
+  scoreYield: 1
   OnDead:
     m_PersistentCalls:
       m_Calls:
