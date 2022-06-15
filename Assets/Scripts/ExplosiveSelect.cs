@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-public class BarrelSelect : MonoBehaviour 
+public class ExplosiveSelect : MonoBehaviour 
 {
     public Camera cam;
 
@@ -22,7 +22,7 @@ public class BarrelSelect : MonoBehaviour
     {
         if (selectedBarrel != null)
         {
-            selectedBarrel.GetComponent<Barrel>().Explosion();
+            Destroy(selectedBarrel);
         }
         else {
             Debug.Log("no selected barrel!");
@@ -41,16 +41,16 @@ public class BarrelSelect : MonoBehaviour
 
         if (detectedObject)
         {
-            if (detectedObject.GetComponent<Barrel>() != null)
+            if (detectedObject.GetComponent<Explosive>() != null)
             {
                 // deselect previous
                 if (selectedBarrel != null)
                 {
-                    selectedBarrel.GetComponent<Barrel>().SetDeselect();
+                    selectedBarrel.GetComponent<Explosive>().SetDeselect();
                 }
                 // select new
                 selectedBarrel = detectedObject.transform.gameObject;
-                selectedBarrel.GetComponent<Barrel>().SetSelected();
+                selectedBarrel.GetComponent<Explosive>().SetSelected();
             }
         }
         

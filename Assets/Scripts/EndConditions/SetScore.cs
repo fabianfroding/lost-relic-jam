@@ -10,15 +10,15 @@ public class SetScore : MonoBehaviour
 
     public TextMeshProUGUI scoreText;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         scoreText = GetComponent<TextMeshProUGUI>();
+        Enemy.OnEnemyDeath += AddToScore;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void AddToScore(int amount)
     {
+        scoreValue += amount;
         scoreText.text = "Score: " + scoreValue;
     }
 }
