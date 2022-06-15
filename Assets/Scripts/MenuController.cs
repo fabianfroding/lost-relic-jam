@@ -7,7 +7,7 @@ public class MenuController : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("BarrelExplosion");
+        SceneManager.LoadScene("LevelSelect");
     }
 
     public void QuitGame()

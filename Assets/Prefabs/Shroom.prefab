@@ -145,3 +145,5 @@ MonoBehaviour:
   deathSoundPrefab: {fileID: 603580818877163831, guid: f39c77aa05fc39c45a8d3f87c702fb79, type: 3}
   isSelected: 0
   explodeTimer: 0
+  damage: 5
+  gameManager: {fileID: 4095330832607732838, guid: 42c891e2a9db0af4891f27d6acc3f462, type: 3}

@@ -19,6 +19,11 @@ public class Barrel : MonoBehaviour
     private bool isExploding;
     [SerializeField] private float explodeTimer;
 
+    //Enemy, damage and score vars
+    public int damage = 5;
+    Enemy enemy;
+    public GameManager gameManager;
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -27,6 +32,7 @@ public class Barrel : MonoBehaviour
 
     private void Start()
     {
+        enemy = GetComponent<Enemy>();
     }
 
     void Update()
@@ -42,6 +48,17 @@ public class Barrel : MonoBehaviour
         {
             Vector2 dir = obj.transform.position - transform.position;
             obj.GetComponent<Rigidbody2D>().AddForce(dir * force, ForceMode2D.Impulse);
+
+
+            // set score + damage to enemies
+           
+            if (obj.gameObject.CompareTag("Enemy"))
+            {
+                Debug.Log("Damage: " + damage);
+                obj.GetComponent<Enemy>().Hit(damage);
+                SetScore.scoreValue += damage;
+            }
+
             if (explosionPrefab != null)
             {
                 Instantiate(explosionPrefab, transform.position, transform.rotation);
@@ -59,7 +76,13 @@ public class Barrel : MonoBehaviour
                     }
                 }
             }
+
         }
+        //JUST FOR TEST!!! IT SHOULD BE -- WHEN PLACING SHROOMS - remaining placeable shroom count
+        SetShroomNr.shroomNr -= 1;
+        //SAME
+        gameManager.Win();
+
         Destroy(gameObject);
         InstantiateVisuals();
     }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Barrel
   - FxTemporaire
+  - Enemy
   layers:
   - Default
   - TransparentFX

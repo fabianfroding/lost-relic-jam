@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 238793755736661858}
   - component: {fileID: 238793755736661857}
+  - component: {fileID: 4095330832607732838}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -44,7 +45,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaaaa69cc8ea2b14885b1641b4d712cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
-  detectionBoxSize: {x: 0.2, y: 0.2}
-  rotationAngle: 0
+  cam: {fileID: 0}
   selectedBarrel: {fileID: 0}
+--- !u!114 &4095330832607732838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238793755736661859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c867a4ef87c5ee74d850a2e0412e117f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverUI: {fileID: 0}
+  nextlevel: Level2
+  nextLevelIndex: 2
