@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Barrel : MonoBehaviour
+public class Explosive : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
@@ -15,7 +15,7 @@ public class Barrel : MonoBehaviour
 
     public bool isSelected;
 
-    private const float explodeDelay = 2f;
+    [SerializeField] private float explodeDelay = 0.2f;
     private bool isExploding;
     [SerializeField] private float explodeTimer;
 
@@ -41,21 +41,25 @@ public class Barrel : MonoBehaviour
         foreach (Collider2D obj in objects)
         {
             Vector2 dir = obj.transform.position - transform.position;
-            obj.GetComponent<Rigidbody2D>().AddForce(dir * force, ForceMode2D.Impulse);
+            if (!obj.CompareTag(EditorConstants.TAG_EXPLOSIVE))
+            {
+                obj.GetComponent<Rigidbody2D>().AddForce(dir * force, ForceMode2D.Impulse);
+            }
+            
             if (explosionPrefab != null)
             {
                 Instantiate(explosionPrefab, transform.position, transform.rotation);
             }
             // if affected object is a barrel, explode it too
-            if (obj.gameObject.CompareTag("Barrel") && obj.gameObject != this.gameObject)
+            if (obj.gameObject.CompareTag(EditorConstants.TAG_EXPLOSIVE) && obj.gameObject != this.gameObject)
             {
-                Barrel affectedBarrel = obj.GetComponent<Barrel>();
+                Explosive affectedBarrel = obj.GetComponent<Explosive>();
                 // does not explode itself again
                 if (affectedBarrel != null)
                 {
                     if (!affectedBarrel.isExploding)
                     {
-                        obj.GetComponent<Barrel>().BeginExplode();
+                        obj.GetComponent<Explosive>().BeginExplode();
                     }
                 }
             }
