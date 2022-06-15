@@ -79,9 +79,9 @@ public class Barrel : MonoBehaviour
 
         }
         //JUST FOR TEST!!! IT SHOULD BE -- WHEN PLACING SHROOMS - remaining placeable shroom count
-        SetShroomNr.shroomNr -= 1;
+        //SetShroomNr.shroomNr -= 1;
         //SAME
-        gameManager.Win();
+        //gameManager.Win();
 
         Destroy(gameObject);
         InstantiateVisuals();
