@@ -4,11 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelFinished : MonoBehaviour
-{  
+{
+    [SerializeField]
+    string nextLevelName;
+
     public void NextLevel()
     {
       //TODO: check if there are levels left to load!!
-      SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
+      SceneManager.LoadScene(nextLevelName);
       
     }
 }

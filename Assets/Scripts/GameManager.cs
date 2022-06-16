@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject levelFinishedUI;
 
     public string nextlevel = "Level2";
-    public int nextLevelIndex = 2;
+    public int levelToUnlockIndex = 2;
 
     public int shrooms;
     // Start is called before the first frame update
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
         levelFinishedUI.SetActive(true);
         Debug.Log("LevelPassed");
 
-       PlayerPrefs.SetInt("levelReached", nextLevelIndex);
+       PlayerPrefs.SetInt("levelReached", levelToUnlockIndex);
        /* SceneManager.LoadScene(nextlevel);*/
     }
 }
