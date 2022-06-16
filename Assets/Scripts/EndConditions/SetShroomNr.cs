@@ -5,7 +5,8 @@ using TMPro;
 
 public class SetShroomNr : MonoBehaviour
 {
-    public static int shroomNr = 6;
+    public const int InitialShroomNr = 6; 
+    public static int shroomNr = InitialShroomNr;
 
     public TextMeshProUGUI shroomText;
     // Start is called before the first frame update

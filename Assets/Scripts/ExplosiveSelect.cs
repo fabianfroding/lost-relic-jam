@@ -39,7 +39,6 @@ public class ExplosiveSelect : MonoBehaviour
 
     private void OnLeftMouseDown()
     {
-
         Vector3 mousePosition = Input.mousePosition;
         mousePosition.z = cam.nearClipPlane;
         Vector2 mouseWorldPosition = cam.ScreenToWorldPoint(mousePosition);
