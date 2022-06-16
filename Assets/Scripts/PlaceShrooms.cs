@@ -6,12 +6,14 @@ public class PlaceShrooms : MonoBehaviour
 {
     public GameObject shroomPrefab;
     public Camera cam;
+    public ExplosiveSelect explosiveSelect;
 
 
     // Start is called before the first frame update
     void Start()
     {
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
+        explosiveSelect = GetComponent<ExplosiveSelect>();
         InputManager.OnLeftMouseDown += OnLeftMouseDown;
     }
 
@@ -35,13 +37,21 @@ public class PlaceShrooms : MonoBehaviour
             Debug.Log("Place in an empty area.");
         }
         else {
-            if (SetShroomNr.shroomNr > 0)
+            if (explosiveSelect.hasInfiniteTriggers || !explosiveSelect.hasTriggeredBarrel)
             {
-                GameObject newShroom = Instantiate(shroomPrefab, mouseWorldPosition, Quaternion.identity);
-                SetShroomNr.shroomNr--;
+                if (SetShroomNr.shroomNr > 0)
+                {
+                    GameObject newShroom = Instantiate(shroomPrefab, mouseWorldPosition, Quaternion.identity);
+                    SetShroomNr.shroomNr--;
+                }
             }
         }
         
+    }
+
+    private void OnDestroy()
+    {
+        InputManager.OnLeftMouseDown -= OnLeftMouseDown;
     }
 
     
