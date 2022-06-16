@@ -63,7 +63,6 @@ public class Explosive : MonoBehaviour
         Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position, impactField, impactLayer);
         foreach (Collider2D obj in objects)
         {
-            Debug.Log(objects.Length);
             if (obj.CompareTag(EditorConstants.TAG_ENEMY))
             {
                 Vector2 dir = obj.transform.position - transform.position;
