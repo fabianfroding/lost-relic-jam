@@ -29,24 +29,24 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown("e"))
         {
-            EndGame();
+            LevelFailed();
         }
 
         if (Input.GetKeyDown("f"))
         {
-            Win();
+            LevelWon();
         }
       
     }
 
-    void EndGame()
+    void LevelFailed()
     {
         GameOver = true;
         scoreUI.SetActive(false);
         gameOverUI.SetActive(true);
     }
 
-    public void Win()
+    public void LevelWon()
     {
         scoreUI.SetActive(false);
         levelFinishedUI.SetActive(true);
