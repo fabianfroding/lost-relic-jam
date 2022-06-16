@@ -12,6 +12,7 @@ public class SetShroomNr : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        shroomNr = InitialShroomNr;
         shroomText = GetComponent<TextMeshProUGUI>();
     }
 
