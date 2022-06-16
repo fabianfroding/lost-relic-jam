@@ -9,6 +9,8 @@ public class ExplosiveSelect : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(cam.gameObject.name);
+        cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         InputManager.OnLeftMouseDown += OnLeftMouseDown;
         InputManager.OnStartExplode += OnStartExplodeClicked;
     }
@@ -22,7 +24,7 @@ public class ExplosiveSelect : MonoBehaviour
     {
         if (selectedBarrel != null)
         {
-            Destroy(selectedBarrel);
+            selectedBarrel.GetComponent<Explosive>().Explode();
         }
         else {
             Debug.Log("no selected barrel!");
@@ -54,5 +56,11 @@ public class ExplosiveSelect : MonoBehaviour
             }
         }
         
+    }
+
+    private void OnDestroy()
+    {
+        InputManager.OnLeftMouseDown -= OnLeftMouseDown;
+        InputManager.OnStartExplode -= OnStartExplodeClicked;
     }
 }
