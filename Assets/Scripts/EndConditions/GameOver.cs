@@ -8,7 +8,7 @@ using System;
 public class GameOver : MonoBehaviour
 {
     public TextMeshProUGUI shroomsLeft;
-    public static event Action OnLevelRestart;
+    public static event Action OnLevelRestartResetScore;
 
     private void OnEnable()
     {
@@ -17,12 +17,13 @@ public class GameOver : MonoBehaviour
 
     public void Restart()
     {
-        OnLevelRestart?.Invoke();
+        OnLevelRestartResetScore?.Invoke();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void BackToMenu()
     {
+        OnLevelRestartResetScore?.Invoke();
         SceneManager.LoadScene("MainMenu");
     }
 }

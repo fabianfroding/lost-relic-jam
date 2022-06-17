@@ -36,6 +36,6 @@ public class SetScore : MonoBehaviour
     private void OnDestroy()
     {
         Enemy.OnEnemyDeath -= AddToScore;
-        GameOver.OnLevelRestart -= ResetScore;
+        GameOver.OnLevelRestartResetScore -= ResetScore;
     }
 }
