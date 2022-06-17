@@ -142,6 +142,8 @@ MonoBehaviour:
   distance: 0
   scoreYield: 1
   deathSoundPrefab: {fileID: 603580818877163831, guid: 84e8168258afa8b4a8479337c1683c05, type: 3}
+  deathSFXPrefab: {fileID: 100004, guid: 0305ed715a0eb9344a59c0d20b8d6cdc, type: 3}
+  hitSFXPrefab: {fileID: 100000, guid: 5d2ede475ba90b1478d9d487c796293d, type: 3}
   OnDead:
     m_PersistentCalls:
       m_Calls:

@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private int scoreYield = 1;
     [SerializeField] private GameObject deathSoundPrefab;
+    [SerializeField] private GameObject deathSFXPrefab;
+    [SerializeField] private GameObject hitSFXPrefab;
 
     public static event Action<int> OnEnemyDeath;
 
@@ -55,6 +57,7 @@ public class Enemy : MonoBehaviour
     internal void Hit(int damage)
     {
         Health -= damage;
+        InstantiateHitVisuals();
 
         if(Health <= 0)
         {
@@ -77,6 +80,21 @@ public class Enemy : MonoBehaviour
         {
             GameObject deathSound = Instantiate(deathSoundPrefab);
             deathSound.transform.parent = null;
+        }
+
+        if (deathSFXPrefab != null)
+        {
+            GameObject deathSFX = Instantiate(deathSFXPrefab);
+            deathSFX.transform.parent = null;
+        }
+    }
+
+    private void InstantiateHitVisuals()
+    {
+        if (hitSFXPrefab != null)
+        {
+            GameObject hitSFX = Instantiate(hitSFXPrefab);
+            hitSFX.transform.parent = null;
         }
     }
 
