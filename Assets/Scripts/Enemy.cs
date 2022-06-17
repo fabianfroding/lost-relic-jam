@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     int health;
 
+    public GameManager gameManager;
+
     public float distance;
 
     [SerializeField] private int scoreYield = 1;
@@ -49,9 +51,16 @@ public class Enemy : MonoBehaviour
 
     internal void Hit(int damage)
     {
+        Health -= damage;
+
         if(Health <= 0)
         {
-            OnDead?.Invoke();
+            //OnDead?.Invoke();
+            // Here I tried it again to somehow remove the impacted enemies without much success
+            gameManager.enemyNumberAtStart--;
+            Debug.Log("Enemies left: " + gameManager.enemyNumberAtStart);
+
+            Destroy(gameObject);
         }
         else
         {

@@ -16,6 +16,10 @@ public class SetScore : MonoBehaviour
         Enemy.OnEnemyDeath += AddToScore;
     }
 
+    void Update()
+    {
+        scoreText.text = "Score: " + scoreValue;
+    }
     private void AddToScore(int amount)
     {
         scoreValue += amount;

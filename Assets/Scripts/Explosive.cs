@@ -11,12 +11,11 @@ public class Explosive : MonoBehaviour
     public float force;
     public GameObject explosionPrefab;
     public GameObject deathSoundPrefab;
-
     public bool isSelected;
     [SerializeField] private float explodeDelay = 0.3f;
 
     //Enemy, damage and score vars
-    public int damage = 5;
+    public int damage = 0;
     public GameManager gameManager;
 
     #region Unity Callback Functions
@@ -67,8 +66,13 @@ public class Explosive : MonoBehaviour
             {
                 Vector2 dir = obj.transform.position - transform.position;
                 obj.GetComponent<Rigidbody2D>().AddForce(dir * force, ForceMode2D.Impulse);
-                //Debug.Log("Damage: " + damage);
-                obj.GetComponent<Enemy>().Hit(CalculateDamage(damage, obj.gameObject));
+
+                //Calculate damage + assign score
+                damage = CalculateDamage(damage, obj.gameObject);
+                obj.GetComponent<Enemy>().Hit(damage);
+                Debug.Log("Damage: " + damage);
+                SetScore.scoreValue += damage; //score works this way, can't make it work the other way
+
             }
 
             // if affected object is explosive, explode it too, and is not own explosive
@@ -78,12 +82,8 @@ public class Explosive : MonoBehaviour
             }
         }
 
-        //JUST FOR TEST!!! IT SHOULD BE -- WHEN PLACING SHROOMS - remaining placeable shroom count
-        //SetShroomNr.shroomNr -= 1;
-        //SAME
-        //gameManager.Win();
-
         InstantiateVisuals();
+        gameManager.hasExploded = true;
     }
 
     public void DelayedExplode()
@@ -98,30 +98,47 @@ public class Explosive : MonoBehaviour
         Explode();
     }
 
-    public int CalculateDamage(int baseDamage, GameObject target)
+    public int CalculateDamage(int newDamage, GameObject target)
     {
         float distance = Vector3.Distance(gameObject.transform.position, target.transform.position);
-        int newDamage = baseDamage;
 
         if (distance < 0.5)
         {
             newDamage = 100;
         }
-        else if (distance < 1)
+        else if (distance < 1 && distance > 0.5)
         {
             newDamage = 75;
         }
-        else if (distance < 2)
+        else if (distance < 2 && distance > 1)
         {
             newDamage = 50;
         }
-        else if (distance < 3.5)
+        else if (distance < 3 && distance > 2)
         {
             newDamage = 25;
+        }
+        else
+        {
+            newDamage = 15;
         }
 
         return newDamage;
     }
+
+    //should check if there are any enemies left, if no level won, if yes level failed
+   /* void CheckRemainingEnemies()
+    {
+        Debug.Log("Check remaining enemies called");
+        if (gameManager.enemyNumberAtStart <= 0)
+        {
+            gameManager.LevelWon();
+        }
+        else if (gameManager.enemyNumberAtStart > 0)
+        {
+            gameManager.LevelFailed();
+        }
+    }*/
 
     public void SetSelected()
     {

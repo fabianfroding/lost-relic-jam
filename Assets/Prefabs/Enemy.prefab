@@ -137,10 +137,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751df86a33fc5e445a6efefc916a5cff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  barrel: {fileID: 0}
   StartHealth: 10
   health: 47
-  damage: 5
+  gameManager: {fileID: 4095330832607732838, guid: 42c891e2a9db0af4891f27d6acc3f462, type: 3}
   distance: 0
   scoreYield: 1
   OnDead:
