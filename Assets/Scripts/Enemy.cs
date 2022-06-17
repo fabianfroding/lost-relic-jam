@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     public float distance;
 
     [SerializeField] private int scoreYield = 1;
+    [SerializeField] private GameObject deathSoundPrefab;
 
     public static event Action<int> OnEnemyDeath;
 
@@ -40,6 +41,7 @@ public class Enemy : MonoBehaviour
     public void KillEnemy()
     {
         OnEnemyDeath?.Invoke(scoreYield);
+        InstantiateDeathVisuals();
         Destroy(gameObject);
     }
 
@@ -60,11 +62,20 @@ public class Enemy : MonoBehaviour
             gameManager.enemyNumberAtStart--;
             Debug.Log("Enemies left: " + gameManager.enemyNumberAtStart);
 
-            Destroy(gameObject);
+            KillEnemy();
         }
         else
         {
             OnHit?.Invoke();
+        }
+    }
+
+    private void InstantiateDeathVisuals()
+    {
+        if (deathSoundPrefab != null)
+        {
+            GameObject deathSound = Instantiate(deathSoundPrefab);
+            deathSound.transform.parent = null;
         }
     }
 
