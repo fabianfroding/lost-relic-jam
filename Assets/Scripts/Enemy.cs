@@ -79,12 +79,14 @@ public class Enemy : MonoBehaviour
         if (deathSoundPrefab != null)
         {
             GameObject deathSound = Instantiate(deathSoundPrefab);
+            deathSound.transform.position = transform.position;
             deathSound.transform.parent = null;
         }
 
         if (deathSFXPrefab != null)
         {
             GameObject deathSFX = Instantiate(deathSFXPrefab);
+            deathSFX.transform.position = transform.position;
             deathSFX.transform.parent = null;
         }
     }
@@ -94,6 +96,7 @@ public class Enemy : MonoBehaviour
         if (hitSFXPrefab != null)
         {
             GameObject hitSFX = Instantiate(hitSFXPrefab);
+            hitSFX.transform.position = transform.position;
             hitSFX.transform.parent = null;
         }
     }
