@@ -18,6 +18,9 @@ public class Explosive : MonoBehaviour
     public int damage = 5;
     public GameManager gameManager;
 
+    [SerializeField]
+    Enemy[] enemies;
+
     #region Unity Callback Functions
     private void Awake()
     {
@@ -34,8 +37,9 @@ public class Explosive : MonoBehaviour
             {
                 Vector2 dir = obj.transform.position - transform.position;
                 obj.GetComponent<Rigidbody2D>().AddForce(dir * force, ForceMode2D.Impulse);
-                //Debug.Log("Damage: " + damage);
+                
                 obj.GetComponent<Enemy>().Hit(CalculateDamage(damage, obj.gameObject));
+                Debug.Log("Damage: " + CalculateDamage(damage, obj.gameObject));
             }
 
             // if affected object is a barrel, explode it too
@@ -44,6 +48,15 @@ public class Explosive : MonoBehaviour
                 obj.GetComponent<Explosive>().Explode();
             }
 
+            /*if (gameManager.enemies.Length > 0)
+            {
+                gameManager.LevelFailed();
+            }
+
+            else if (gameManager.enemies.Length == 0)
+            {
+                gameManager.LevelWon();
+            }*/
         }
 
         //JUST FOR TEST!!! IT SHOULD BE -- WHEN PLACING SHROOMS - remaining placeable shroom count

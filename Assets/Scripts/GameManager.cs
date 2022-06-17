@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public int levelToUnlockIndex = 2;
 
     public int shrooms;
+
     // Start is called before the first frame update
     void Start()
     {
