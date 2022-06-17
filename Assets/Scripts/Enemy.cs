@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public class Enemy : MonoBehaviour
 {
     public int StartHealth = 100;
-    [SerializeField]
+    
     int health;
 
     public GameManager gameManager;
@@ -22,7 +22,8 @@ public class Enemy : MonoBehaviour
         set
         {
             health = value;
-            OnHealthChange?.Invoke((float)Health / StartHealth);
+            OnHealthChange?.Invoke((float)health);
+            //OnHealthChange?.Invoke((float)Health / StartHealth);
         }
     }
 
@@ -64,7 +65,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            OnHit?.Invoke();
+            OnHit?.Invoke();   
         }
     }
 
