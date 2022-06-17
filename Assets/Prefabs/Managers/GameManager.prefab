@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 238793755736661858}
   - component: {fileID: 238793755736661857}
   - component: {fileID: 4095330832607732838}
+  - component: {fileID: 7142792816735126208}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -47,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
   selectedBarrel: {fileID: 0}
+  hasTriggeredBarrel: 0
+  hasInfiniteTriggers: 0
 --- !u!114 &4095330832607732838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,5 +63,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverUI: {fileID: 0}
+  scoreUI: {fileID: 0}
+  levelFinishedUI: {fileID: 0}
   nextlevel: Level2
-  nextLevelIndex: 2
+  levelToUnlockIndex: 2
+  shrooms: 0
+--- !u!114 &7142792816735126208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238793755736661859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2cdcc9768c64c4db6e2ca2636324c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shroomPrefab: {fileID: 3016018574883851713, guid: 7c8f020d080eb94429b41ad5adb6adb8, type: 3}
+  cam: {fileID: 0}

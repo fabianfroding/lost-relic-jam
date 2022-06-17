@@ -7,6 +7,7 @@ public class Explosive : MonoBehaviour
     private Rigidbody2D rb;
 
     public float impactField;
+    public LayerMask impactLayer;
     public float force;
     public GameObject explosionPrefab;
     public GameObject deathSoundPrefab;
@@ -18,9 +19,6 @@ public class Explosive : MonoBehaviour
     public int damage = 5;
     public GameManager gameManager;
 
-    [SerializeField]
-    Enemy[] enemies;
-
     #region Unity Callback Functions
     private void Awake()
     {
@@ -30,41 +28,7 @@ public class Explosive : MonoBehaviour
 
     private void OnDestroy()
     {
-        Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position, impactField);
-        foreach (Collider2D obj in objects)
-        {
-            if (obj.CompareTag(EditorConstants.TAG_ENEMY))
-            {
-                Vector2 dir = obj.transform.position - transform.position;
-                obj.GetComponent<Rigidbody2D>().AddForce(dir * force, ForceMode2D.Impulse);
-                
-                obj.GetComponent<Enemy>().Hit(CalculateDamage(damage, obj.gameObject));
-                Debug.Log("Damage: " + CalculateDamage(damage, obj.gameObject));
-            }
 
-            // if affected object is a barrel, explode it too
-            if (obj.gameObject.CompareTag(EditorConstants.TAG_EXPLOSIVE) && obj.gameObject != this.gameObject)
-            {
-                obj.GetComponent<Explosive>().Explode();
-            }
-
-            /*if (gameManager.enemies.Length > 0)
-            {
-                gameManager.LevelFailed();
-            }
-
-            else if (gameManager.enemies.Length == 0)
-            {
-                gameManager.LevelWon();
-            }*/
-        }
-
-        //JUST FOR TEST!!! IT SHOULD BE -- WHEN PLACING SHROOMS - remaining placeable shroom count
-        //SetShroomNr.shroomNr -= 1;
-        //SAME
-        //gameManager.Win();
-
-        InstantiateVisuals();
     }
 
     private void OnMouseEnter()
@@ -93,14 +57,45 @@ public class Explosive : MonoBehaviour
 
     public void Explode()
     {
-        StopCoroutine(ExplodeDelayed());
-        StartCoroutine(ExplodeDelayed());
+        // prevent stackoverflows by destroying it first so other explosives cant see it in their explosions
+        Destroy(this.gameObject);
+        
+        Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position, impactField, impactLayer);
+        foreach (Collider2D obj in objects)
+        {
+            if (obj.CompareTag(EditorConstants.TAG_ENEMY))
+            {
+                Vector2 dir = obj.transform.position - transform.position;
+                obj.GetComponent<Rigidbody2D>().AddForce(dir * force, ForceMode2D.Impulse);
+                //Debug.Log("Damage: " + damage);
+                obj.GetComponent<Enemy>().Hit(CalculateDamage(damage, obj.gameObject));
+            }
+
+            // if affected object is explosive, explode it too, and is not own explosive
+            if (obj.gameObject.CompareTag(EditorConstants.TAG_EXPLOSIVE) && obj.gameObject != this.gameObject)
+            {
+                obj.GetComponent<Explosive>().DelayedExplode();
+            }
+        }
+
+        //JUST FOR TEST!!! IT SHOULD BE -- WHEN PLACING SHROOMS - remaining placeable shroom count
+        //SetShroomNr.shroomNr -= 1;
+        //SAME
+        //gameManager.Win();
+
+        InstantiateVisuals();
     }
 
-    private IEnumerator ExplodeDelayed()
+    public void DelayedExplode()
+    {
+        StopCoroutine(ExplodeAfterDelay());
+        StartCoroutine(ExplodeAfterDelay());
+    }
+
+    private IEnumerator ExplodeAfterDelay()
     {
         yield return new WaitForSeconds(explodeDelay);
-        Destroy(gameObject);
+        Explode();
     }
 
     public int CalculateDamage(int baseDamage, GameObject target)

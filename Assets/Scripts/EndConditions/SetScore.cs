@@ -21,4 +21,9 @@ public class SetScore : MonoBehaviour
         scoreValue += amount;
         scoreText.text = "Score: " + scoreValue;
     }
+
+    private void OnDestroy()
+    {
+        Enemy.OnEnemyDeath -= AddToScore;
+    }
 }

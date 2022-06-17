@@ -1572,7 +1572,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shroomsLeft: {fileID: 1938922206}
-  levelName: Level1
 --- !u!1 &722517091
 GameObject:
   m_ObjectHideFlags: 0
@@ -5361,7 +5360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7989901000434ea4b9daf2a58e1ac211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelName: Level2
+  nextLevelName: 
 --- !u!1 &1938922203
 GameObject:
   m_ObjectHideFlags: 0
