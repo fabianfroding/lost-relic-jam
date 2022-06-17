@@ -31,8 +31,8 @@ public class GameManager : MonoBehaviour
             return;
 
         //tried to limit the function call to only when it explodes, still doesn't work
-        if(hasExploded)
-             CheckRemainingEnemies();
+       
+            // CheckRemainingEnemies();
 
         if (Input.GetKeyDown("e"))
         {
@@ -47,19 +47,22 @@ public class GameManager : MonoBehaviour
     }
 
     //should check if there are any enemies left, if no level won, if yes level failed but does not work
-    void CheckRemainingEnemies()
+    /*void CheckRemainingEnemies()
     {
-        Debug.Log("Check remaining enemies called");
-        if (enemyNumberAtStart <= 0)
+        if (hasExploded)
         {
-            LevelWon();
-        }
-        else if (enemyNumberAtStart > 0)
-        {
-            LevelFailed();
+            Debug.Log("Check remaining enemies called");
+            if (enemyNumberAtStart <= 0)
+            {
+                LevelWon();
+            }
+            else if (enemyNumberAtStart > 0)
+            {
+                LevelFailed();
+            }
         }
     }
-
+    */
     public void LevelFailed()
     {
         GameOver = true;

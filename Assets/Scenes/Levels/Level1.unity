@@ -4461,6 +4461,7 @@ GameObject:
   - component: {fileID: 1639119818}
   - component: {fileID: 1639119820}
   - component: {fileID: 1639119819}
+  - component: {fileID: 1639119821}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -4585,6 +4586,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1639119817}
   m_CullTransparentMesh: 1
+--- !u!114 &1639119821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639119817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 557d1a9097fb65f4da1e64bea23cb44a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 1639119819}
 --- !u!1 &1670198076
 GameObject:
   m_ObjectHideFlags: 0
@@ -5360,7 +5374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7989901000434ea4b9daf2a58e1ac211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevelName: 
+  nextLevelName: Level2
 --- !u!1 &1938922203
 GameObject:
   m_ObjectHideFlags: 0
@@ -5372,6 +5386,7 @@ GameObject:
   - component: {fileID: 1938922204}
   - component: {fileID: 1938922207}
   - component: {fileID: 1938922206}
+  - component: {fileID: 1938922208}
   m_Layer: 5
   m_Name: ShroomsLeftNr
   m_TagString: Untagged
@@ -5496,6 +5511,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1938922203}
   m_CullTransparentMesh: 1
+--- !u!114 &1938922208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938922203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 153725c20f51c4b4cb9afa047f91e887, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shroomText: {fileID: 1938922206}
 --- !u!1001 &1939172280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5564,6 +5592,7 @@ GameObject:
   - component: {fileID: 1949824671}
   - component: {fileID: 1949824673}
   - component: {fileID: 1949824672}
+  - component: {fileID: 1949824674}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -5688,6 +5717,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949824670}
   m_CullTransparentMesh: 1
+--- !u!114 &1949824674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949824670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 557d1a9097fb65f4da1e64bea23cb44a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 1949824672}
 --- !u!1 &2047704691
 GameObject:
   m_ObjectHideFlags: 0
