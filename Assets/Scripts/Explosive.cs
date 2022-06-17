@@ -66,8 +66,10 @@ public class Explosive : MonoBehaviour
             {
                 Vector2 dir = obj.transform.position - transform.position;
                 obj.GetComponent<Rigidbody2D>().AddForce(dir * force, ForceMode2D.Impulse);
+
                 //Calculate damage + assign score
-		obj.GetComponent<Enemy>().Hit(CalculateDamage(damage, obj.gameObject));
+                damage = CalculateDamage(damage, obj.gameObject);
+		        obj.GetComponent<Enemy>().Hit(damage);
                 Debug.Log("Damage: " + damage);
                 SetScore.scoreValue += damage; //score works this way, can't make it work the other way
 
