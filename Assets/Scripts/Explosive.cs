@@ -69,7 +69,7 @@ public class Explosive : MonoBehaviour
 
                 //Calculate damage + assign score
                 damage = CalculateDamage(damage, obj.gameObject);
-                obj.GetComponent<Enemy>().Hit(damage);
+		        obj.GetComponent<Enemy>().Hit(damage);
                 Debug.Log("Damage: " + damage);
                 SetScore.scoreValue += damage; //score works this way, can't make it work the other way
 
@@ -177,4 +177,12 @@ public class Explosive : MonoBehaviour
             explosion.transform.position = transform.position;
         }
     }
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    int collidedEnemyHealth = collision.gameObject.GetComponent<Enemy>().Health;
+    //    int newHealth = collidedEnemyHealth - CalculateDamage(0, collision.gameObject); //adding 0 as base dmg since im not quite sure what its purpose is 
+    //    collision.gameObject.GetComponent<Enemy>().Health = newHealth;
+    //}
+
 }
