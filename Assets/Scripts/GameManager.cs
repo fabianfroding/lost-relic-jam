@@ -45,6 +45,8 @@ public class GameManager : MonoBehaviour
         currentShroomNumber = allShroomsInLevel.Length;
         Debug.Log("Initial Shrooms: " + currentShroomNumber);
 
+        InputManager.OnWinLevel += OnWinLevel;
+        InputManager.OnRestartLevel += OnRestartLevel;
         Enemy.OnEnemyDeath += OnEnemyDeath;
         Explosive.OnExplosion += OnExplosion;
         PlaceShrooms.OnShroomPlaced += OnShroomPlaced;
@@ -61,16 +63,15 @@ public class GameManager : MonoBehaviour
         {
             CheckRemainingEnemies();
         }
+    }
 
-        if (Input.GetKeyDown("e"))
-        {
-            LevelFailed();
-        }
-
-        if (Input.GetKeyDown("f"))
-        {
-            LevelWon();
-        }
+    private void OnRestartLevel()
+    {
+        LevelFailed();
+    }
+    private void OnWinLevel()
+    {
+        LevelWon();
     }
 
     private void OnEnemyDeath(int score)
@@ -162,6 +163,8 @@ public class GameManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        InputManager.OnWinLevel -= OnWinLevel;
+        InputManager.OnRestartLevel -= OnRestartLevel;
         Enemy.OnEnemyDeath -= OnEnemyDeath;
         Explosive.OnExplosion -= OnExplosion;
         PlaceShrooms.OnShroomPlaced -= OnShroomPlaced;
