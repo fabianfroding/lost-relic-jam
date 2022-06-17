@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System;
 public class GameOver : MonoBehaviour
 {
     public TextMeshProUGUI shroomsLeft;
+    public static event Action OnLevelRestart;
 
     private void OnEnable()
     {
@@ -15,6 +17,7 @@ public class GameOver : MonoBehaviour
 
     public void Restart()
     {
+        OnLevelRestart?.Invoke();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
