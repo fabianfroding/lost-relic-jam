@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlaceShrooms : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class PlaceShrooms : MonoBehaviour
     public Camera cam;
     public ExplosiveSelect explosiveSelect;
 
+    public static event Action OnShroomPlaced;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +45,7 @@ public class PlaceShrooms : MonoBehaviour
                 {
                     GameObject newShroom = Instantiate(shroomPrefab, mouseWorldPosition, Quaternion.identity);
                     SetShroomNr.shroomNr--;
+                    OnShroomPlaced?.Invoke();
                 }
             }
         }

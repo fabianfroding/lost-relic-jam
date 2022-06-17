@@ -11,12 +11,16 @@ public class InputManager : MonoBehaviour
     public bool isLeftMouseDown { get; private set; }
     // Debug Commands
     public bool infiniteSelectsAllowed { get; private set; }
+    public bool winLevelPressed { get; private set; }
+    public bool restartLevelPressed { get; private set; }
 
 
     public static event Action OnStartExplode;
     public static event Action OnLeftMouseDown;
     // Debugs
     public static event Action OnInfiniteSelectsAllowed;
+    public static event Action OnWinLevel;
+    public static event Action OnRestartLevel;
 
     private void Awake()
     {
@@ -28,6 +32,8 @@ public class InputManager : MonoBehaviour
         GetStartExplode();
         GetLeftMouseDown();
         GetInfiniteClicksAllowed();
+        GetWinLevelPressed();
+        GetRestartLevelPressed();
     }
 
     private void GetStartExplode()
@@ -46,5 +52,15 @@ public class InputManager : MonoBehaviour
     {
         infiniteSelectsAllowed = Input.GetKeyDown(KeyCode.Q);
         if (infiniteSelectsAllowed == true) { OnInfiniteSelectsAllowed?.Invoke(); }
+    }
+    private void GetWinLevelPressed()
+    {
+        winLevelPressed = Input.GetKeyDown(KeyCode.F);
+        if (winLevelPressed == true) { OnWinLevel?.Invoke(); }
+    }
+    private void GetRestartLevelPressed()
+    {
+        restartLevelPressed = Input.GetKeyDown(KeyCode.E);
+        if (restartLevelPressed == true) { OnRestartLevel?.Invoke(); }
     }
 }

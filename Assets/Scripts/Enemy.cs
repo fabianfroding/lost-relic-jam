@@ -4,8 +4,7 @@ using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
-    public int StartHealth = 100;
-    
+    public const int StartHealth = 100;
     int health;
 
     public GameManager gameManager;
@@ -62,10 +61,6 @@ public class Enemy : MonoBehaviour
         if(Health <= 0)
         {
             //OnDead?.Invoke();
-            // Here I tried it again to somehow remove the impacted enemies without much success
-            gameManager.enemyNumberAtStart--;
-            Debug.Log("Enemies left: " + gameManager.enemyNumberAtStart);
-
             KillEnemy();
         }
         else
