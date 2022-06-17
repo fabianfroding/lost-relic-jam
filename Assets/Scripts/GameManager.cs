@@ -9,10 +9,18 @@ public class GameManager : MonoBehaviour
 
     public static bool GameOver;
     public GameObject gameOverUI;
+
+    public float remainingGameoverTimeout;
+    public const float gameoverTimeoutDelay = 5f;
+    private Coroutine gameoverTimeoutCoroutine = null;
+
     public GameObject scoreUI;
     public GameObject levelFinishedUI;
 
-    public string nextlevel = "Level2";
+
+    // hard coded scene name to the next level
+    public string nextlevel;
+    // progression - tells which level player can access
     public int levelToUnlockIndex = 2;
 
     private Explosive[] allShroomsInLevel;
@@ -20,6 +28,8 @@ public class GameManager : MonoBehaviour
 
     private Enemy[] allEnemiesInLevel;
     public int currentEnemyNumber;
+
+
 
 
     // Start is called before the first frame update
@@ -33,19 +43,13 @@ public class GameManager : MonoBehaviour
 
         allShroomsInLevel = FindObjectsOfType<Explosive>();
         currentShroomNumber = allShroomsInLevel.Length;
-        // Debug.Log("Initial Shrooms: " + currentShroomNumber);
+        Debug.Log("Initial Shrooms: " + currentShroomNumber);
 
         Enemy.OnEnemyDeath += OnEnemyDeath;
         Explosive.OnExplosion += OnExplosion;
         PlaceShrooms.OnShroomPlaced += OnShroomPlaced;
     }
 
-    void OnDestroy()
-    {
-        Enemy.OnEnemyDeath -= OnEnemyDeath;
-        Explosive.OnExplosion -= OnExplosion;
-        PlaceShrooms.OnShroomPlaced -= OnShroomPlaced;
-    }
 
     // Update is called once per frame
     void Update()
@@ -72,19 +76,54 @@ public class GameManager : MonoBehaviour
     private void OnEnemyDeath(int score)
     {
         currentEnemyNumber--;
-        Debug.Log("Enemies left: " + currentEnemyNumber);
+        // Debug.Log("Enemies left: " + currentEnemyNumber);
     }
 
     private void OnExplosion()
     {
         currentShroomNumber--;
-        Debug.Log("Shrooms left: " + currentShroomNumber);
+        Debug.Log("Shrooms left: " +  currentShroomNumber);
+
+        BeginTimeoutUntilLose();
     }
+
+    public void BeginTimeoutUntilLose()
+    {
+        // ensure only 1 coroutine is run
+        if (gameoverTimeoutCoroutine != null)
+        {
+            StopCoroutine(gameoverTimeoutCoroutine);
+        }
+        gameoverTimeoutCoroutine = StartCoroutine(LoseAfterDelay());
+    }
+
+    private IEnumerator LoseAfterDelay()
+    {
+        // yield return new WaitForSeconds(gameoverTimeoutDelay);
+        int countdown = 0;
+        int prevCountdown = 0;
+
+        for(remainingGameoverTimeout = gameoverTimeoutDelay; remainingGameoverTimeout > 0; remainingGameoverTimeout -= Time.deltaTime)
+        {
+            if (remainingGameoverTimeout <= 3.5f)
+            {
+                countdown = Mathf.FloorToInt(remainingGameoverTimeout % 60);
+                if (countdown != prevCountdown) 
+                {
+                    Debug.Log("Losing in: " + countdown);
+                    prevCountdown = countdown;
+                }
+            }
+            yield return null;
+        }
+        LevelFailed();
+    }
+
 
     private void OnShroomPlaced()
     {
         currentShroomNumber++;
-        Debug.Log("Current Shrooms: " + currentShroomNumber);
+        // Debug.Log("Current Shrooms: " + currentShroomNumber);
     }
 
     //should check if there are any enemies left, if no level won, if yes level failed but does not work
@@ -120,4 +159,12 @@ public class GameManager : MonoBehaviour
        PlayerPrefs.SetInt("levelReached", levelToUnlockIndex);
        /* SceneManager.LoadScene(nextlevel);*/
     }
+
+    private void OnDestroy()
+    {
+        Enemy.OnEnemyDeath -= OnEnemyDeath;
+        Explosive.OnExplosion -= OnExplosion;
+        PlaceShrooms.OnShroomPlaced -= OnShroomPlaced;
+    }
+
 }

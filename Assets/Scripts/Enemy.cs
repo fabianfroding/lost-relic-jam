@@ -61,9 +61,6 @@ public class Enemy : MonoBehaviour
         if(Health <= 0)
         {
             //OnDead?.Invoke();
-            
-
-
             KillEnemy();
         }
         else

@@ -18,6 +18,9 @@ public class Explosive : MonoBehaviour
     public bool isSelected;
     [SerializeField] private float explodeDelay = 0.3f;
 
+    // idk weird ass bug that explodes same shroom many times if multiple other shrooms overlap
+    private bool hasAlreadyExploded = false;
+
     //Enemy, damage and score vars
     public int damage = 0;
 
@@ -73,7 +76,7 @@ public class Explosive : MonoBehaviour
                 //Calculate damage + assign score
                 damage = CalculateDamage(damage, obj.gameObject);
 		        obj.GetComponent<Enemy>().Hit(damage);
-                Debug.Log("Damage: " + damage);
+                // Debug.Log("Damage: " + damage);
                 SetScore.scoreValue += damage; //score works this way, can't make it work the other way
 
             }
@@ -87,6 +90,7 @@ public class Explosive : MonoBehaviour
 
         OnExplosion?.Invoke();
         InstantiateVisuals();
+        hasAlreadyExploded = true;
     }
 
     public void DelayedExplode()
@@ -98,7 +102,10 @@ public class Explosive : MonoBehaviour
     private IEnumerator ExplodeAfterDelay()
     {
         yield return new WaitForSeconds(explodeDelay);
-        Explode();
+        if (!hasAlreadyExploded)
+        {
+            Explode();
+        }
     }
 
     public int CalculateDamage(int newDamage, GameObject target)
