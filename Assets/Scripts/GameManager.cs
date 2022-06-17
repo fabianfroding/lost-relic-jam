@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
         if (GameOver)
             return;
 
+        // currently immediately loses if all shrooms gone 
         if (currentShroomNumber <= 0)
         {
             CheckRemainingEnemies();
@@ -85,6 +86,7 @@ public class GameManager : MonoBehaviour
         currentShroomNumber--;
         Debug.Log("Shrooms left: " +  currentShroomNumber);
 
+        // timeout begins and resets on each explosion
         BeginTimeoutUntilLose();
     }
 
@@ -98,9 +100,12 @@ public class GameManager : MonoBehaviour
         gameoverTimeoutCoroutine = StartCoroutine(LoseAfterDelay());
     }
 
+
     private IEnumerator LoseAfterDelay()
     {
         // yield return new WaitForSeconds(gameoverTimeoutDelay);
+
+        // this nightmare is simply used to get the time for printing the lose timeout seconds
         int countdown = 0;
         int prevCountdown = 0;
 
