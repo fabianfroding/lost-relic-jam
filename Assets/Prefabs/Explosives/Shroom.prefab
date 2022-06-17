@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ec68f937fb4ba499f3a9808c9db199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactField: 3.29
+  impactField: 4
   impactLayer:
     serializedVersion: 2
     m_Bits: 384
@@ -146,4 +146,3 @@ MonoBehaviour:
   isSelected: 0
   explodeDelay: 0.3
   damage: 5
-  gameManager: {fileID: 4095330832607732838, guid: 42c891e2a9db0af4891f27d6acc3f462, type: 3}

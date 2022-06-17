@@ -78,13 +78,18 @@ public class Explosive : MonoBehaviour
 		        obj.GetComponent<Enemy>().Hit(damage);
                 // Debug.Log("Damage: " + damage);
                 SetScore.scoreValue += damage; //score works this way, can't make it work the other way
-
             }
 
             // if affected object is explosive, explode it too, and is not own explosive
             if (obj.gameObject.CompareTag(EditorConstants.TAG_EXPLOSIVE) && obj.gameObject != this.gameObject)
             {
                 obj.GetComponent<Explosive>().DelayedExplode();
+            }
+
+            if (obj.CompareTag(EditorConstants.TAG_MOVABLE_OBJECT))
+            {
+                Vector2 dir = obj.transform.position - transform.position;
+                obj.GetComponent<Rigidbody2D>().AddForce(dir * force, ForceMode2D.Impulse);
             }
         }
 
