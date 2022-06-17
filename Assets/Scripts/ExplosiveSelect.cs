@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 
@@ -8,6 +9,8 @@ public class ExplosiveSelect : MonoBehaviour
     public GameObject selectedBarrel;
     public bool hasTriggeredBarrel;   // allow only exploding 1 explosive 
     public bool hasInfiniteTriggers;  // "Q" - allow exploding all the explosives
+
+    public static event Action OnStartExplosionTriggered;
 
     void Start()
     {
@@ -30,6 +33,7 @@ public class ExplosiveSelect : MonoBehaviour
             {
                 selectedBarrel.GetComponent<Explosive>().Explode();
                 hasTriggeredBarrel = true;
+                OnStartExplosionTriggered?.Invoke();
             }
         }
         else {

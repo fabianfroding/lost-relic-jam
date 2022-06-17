@@ -1,10 +1,14 @@
 using System.Collections;
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Explosive : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
+
+    public static event Action OnExplosion;
 
     public float impactField;
     public LayerMask impactLayer;
@@ -16,7 +20,6 @@ public class Explosive : MonoBehaviour
 
     //Enemy, damage and score vars
     public int damage = 0;
-    public GameManager gameManager;
 
     #region Unity Callback Functions
     private void Awake()
@@ -82,8 +85,8 @@ public class Explosive : MonoBehaviour
             }
         }
 
+        OnExplosion?.Invoke();
         InstantiateVisuals();
-        gameManager.hasExploded = true;
     }
 
     public void DelayedExplode()
