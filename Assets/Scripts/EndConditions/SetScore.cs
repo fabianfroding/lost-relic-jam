@@ -14,7 +14,7 @@ public class SetScore : MonoBehaviour
     {
         scoreText = GetComponent<TextMeshProUGUI>();
         Enemy.OnEnemyDeath += AddToScore;
-        GameOver.OnLevelRestart += ResetScore;
+        GameOver.OnLevelRestartResetScore += ResetScore;
     }
 
     void Update()
