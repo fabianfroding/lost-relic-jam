@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &238793755736661859
+--- !u!1 &603580818877163831
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 238793755736661858}
-  - component: {fileID: 238793755736661857}
-  - component: {fileID: 4095330832607732838}
-  - component: {fileID: 7142792816735126208}
-  - component: {fileID: -4517620118765038831}
+  - component: {fileID: 7430307673004021475}
+  - component: {fileID: 532852936884499238}
+  - component: {fileID: 5591602329187790703}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: SND_EnemyDeath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &238793755736661858
+--- !u!4 &7430307673004021475
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238793755736661859}
+  m_GameObject: {fileID: 603580818877163831}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -35,72 +33,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &238793755736661857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238793755736661859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaaaa69cc8ea2b14885b1641b4d712cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  selectedBarrel: {fileID: 0}
-  hasTriggeredBarrel: 0
-  hasInfiniteTriggers: 0
---- !u!114 &4095330832607732838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238793755736661859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c867a4ef87c5ee74d850a2e0412e117f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameOverUI: {fileID: 0}
-  scoreUI: {fileID: 0}
-  levelFinishedUI: {fileID: 0}
-  nextlevel: Level2
-  levelToUnlockIndex: 2
-  shrooms: 0
-  enemyNumberAtStart: -20
-  hasExploded: 1
---- !u!114 &7142792816735126208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238793755736661859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f2cdcc9768c64c4db6e2ca2636324c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shroomPrefab: {fileID: 3016018574883851713, guid: 7c8f020d080eb94429b41ad5adb6adb8, type: 3}
-  cam: {fileID: 0}
-  explosiveSelect: {fileID: 0}
---- !u!82 &-4517620118765038831
+--- !u!82 &532852936884499238
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238793755736661859}
+  m_GameObject: {fileID: 603580818877163831}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5b3f1b9060cf1414790e93ec517a5858, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1d8193f566e670f41965f747813354bb, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -182,3 +129,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5591602329187790703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603580818877163831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91bcd063e49b7234487be6795cd48786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

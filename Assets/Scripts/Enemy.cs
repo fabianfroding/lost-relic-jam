@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public class Enemy : MonoBehaviour
 {
     public int StartHealth = 100;
-    [SerializeField]
+    
     int health;
 
     public GameManager gameManager;
@@ -13,6 +13,9 @@ public class Enemy : MonoBehaviour
     public float distance;
 
     [SerializeField] private int scoreYield = 1;
+    [SerializeField] private GameObject deathSoundPrefab;
+    [SerializeField] private GameObject deathSFXPrefab;
+    [SerializeField] private GameObject hitSFXPrefab;
 
     public static event Action<int> OnEnemyDeath;
 
@@ -22,7 +25,8 @@ public class Enemy : MonoBehaviour
         set
         {
             health = value;
-            OnHealthChange?.Invoke((float)Health / StartHealth);
+            OnHealthChange?.Invoke((float)health);
+            //OnHealthChange?.Invoke((float)Health / StartHealth);
         }
     }
 
@@ -40,6 +44,7 @@ public class Enemy : MonoBehaviour
     public void KillEnemy()
     {
         OnEnemyDeath?.Invoke(scoreYield);
+        InstantiateDeathVisuals();
         Destroy(gameObject);
     }
 
@@ -52,6 +57,7 @@ public class Enemy : MonoBehaviour
     internal void Hit(int damage)
     {
         Health -= damage;
+        InstantiateHitVisuals();
 
         if(Health <= 0)
         {
@@ -60,11 +66,38 @@ public class Enemy : MonoBehaviour
             gameManager.enemyNumberAtStart--;
             Debug.Log("Enemies left: " + gameManager.enemyNumberAtStart);
 
-            Destroy(gameObject);
+            KillEnemy();
         }
         else
         {
-            OnHit?.Invoke();
+            OnHit?.Invoke();   
+        }
+    }
+
+    private void InstantiateDeathVisuals()
+    {
+        if (deathSoundPrefab != null)
+        {
+            GameObject deathSound = Instantiate(deathSoundPrefab);
+            deathSound.transform.position = transform.position;
+            deathSound.transform.parent = null;
+        }
+
+        if (deathSFXPrefab != null)
+        {
+            GameObject deathSFX = Instantiate(deathSFXPrefab);
+            deathSFX.transform.position = transform.position;
+            deathSFX.transform.parent = null;
+        }
+    }
+
+    private void InstantiateHitVisuals()
+    {
+        if (hitSFXPrefab != null)
+        {
+            GameObject hitSFX = Instantiate(hitSFXPrefab);
+            hitSFX.transform.position = transform.position;
+            hitSFX.transform.parent = null;
         }
     }
 
