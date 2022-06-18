@@ -5037,6 +5037,10 @@ PrefabInstance:
       propertyPath: levelFinishedUI
       value: 
       objectReference: {fileID: 1899455251}
+    - target: {fileID: 4095330832607732838, guid: 42c891e2a9db0af4891f27d6acc3f462, type: 3}
+      propertyPath: levelToUnlockIndex
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42c891e2a9db0af4891f27d6acc3f462, type: 3}
 --- !u!1001 &1584701852

@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     // hard coded scene name to the next level
     public string nextlevel;
     // progression - tells which level player can access
-    public int levelToUnlockIndex = 2;
+    public int levelToUnlockIndex = 2; 
 
     private Explosive[] allShroomsInLevel;
     public int currentShroomNumber;
@@ -162,8 +162,8 @@ public class GameManager : MonoBehaviour
         scoreUI.SetActive(false);
         levelFinishedUI.SetActive(true);
         Debug.Log("LevelPassed");
-
-       PlayerPrefs.SetInt("levelReached", levelToUnlockIndex);
+        Debug.Log(levelToUnlockIndex);
+        PlayerPrefs.SetInt("levelReached", levelToUnlockIndex);
        /* SceneManager.LoadScene(nextlevel);*/
     }
 

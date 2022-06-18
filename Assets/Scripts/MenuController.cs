@@ -15,4 +15,10 @@ public class MenuController : MonoBehaviour
         Debug.Log("Quit!");
         Application.Quit();
     }
+
+    public void NewGame()
+    {
+        PlayerPrefs.SetInt("levelReached", 1);
+        SceneManager.LoadScene("LevelSelect");
+    }
 }
