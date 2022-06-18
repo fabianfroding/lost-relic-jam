@@ -5,8 +5,9 @@ using TMPro;
 
 public class SetShroomNr : MonoBehaviour
 {
-    public const int InitialShroomNr = 6; 
-    public static int shroomNr = InitialShroomNr;
+    [Tooltip("Number of placeable mushrooms")]
+    public int InitialShroomNr = 6;
+    public static int shroomNr;
 
     public TextMeshProUGUI shroomText;
     // Start is called before the first frame update
