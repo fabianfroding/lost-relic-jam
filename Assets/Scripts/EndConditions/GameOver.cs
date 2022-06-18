@@ -8,6 +8,7 @@ using System;
 public class GameOver : MonoBehaviour
 {
     public TextMeshProUGUI shroomsLeft;
+    public TextMeshProUGUI enemiesLeft;
     public static event Action OnLevelRestartResetScore;
 
     private void OnEnable()
