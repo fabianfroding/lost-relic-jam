@@ -25,8 +25,4 @@ public class Countdown : MonoBehaviour
         }
     }
 
-    public void ShowUIText()
-    {
-
-    }
 }
