@@ -3,6 +3,7 @@ public class EditorConstants
     // Tags
     public static string TAG_ENEMY = "Enemy";
     public static string TAG_EXPLOSIVE = "Explosive";
+    public static string TAG_MOVABLE_OBJECT = "MovableObject";
 
     // Levels
     public static string SCENE_LEVEL_1 = "Level1";

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ExplosiveSelect : MonoBehaviour 
 {
+    public static ExplosiveSelect Instance; // singleton
     public Camera cam;
 
     public GameObject selectedBarrel;
@@ -12,6 +13,11 @@ public class ExplosiveSelect : MonoBehaviour
 
     public static event Action OnStartExplosionTriggered;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
+    
     void Start()
     {
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
