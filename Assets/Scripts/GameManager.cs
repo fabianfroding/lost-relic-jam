@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private ExplosiveSelect explosiveSelect;
+    // private ExplosiveSelect explosiveSelect;
 
     public static bool GameOver;
     public GameObject gameOverUI;
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        explosiveSelect = GetComponent<ExplosiveSelect>();
+        // explosiveSelect = GetComponent<ExplosiveSelect>();
         GameOver = false;
 
         allEnemiesInLevel = FindObjectsOfType<Enemy>();
@@ -58,12 +58,6 @@ public class GameManager : MonoBehaviour
     {
         if (GameOver)
             return;
-
-        // currently immediately loses if all shrooms gone 
-        if (currentShroomNumber <= 0)
-        {
-            CheckRemainingEnemies();
-        }
     }
 
     private void OnRestartLevel()
@@ -122,7 +116,14 @@ public class GameManager : MonoBehaviour
             }
             yield return null;
         }
-        LevelFailed();
+        
+        if (currentShroomNumber <= 0)
+        {
+            CheckRemainingEnemies();
+        }
+        else {
+            LevelFailed();
+        }
     }
 
 
@@ -135,7 +136,7 @@ public class GameManager : MonoBehaviour
     //should check if there are any enemies left, if no level won, if yes level failed but does not work
     private void CheckRemainingEnemies()
     {
-        if (explosiveSelect.hasTriggeredBarrel && currentShroomNumber <= 0)
+        if (ExplosiveSelect.Instance.hasTriggeredBarrel && currentShroomNumber <= 0)
         {
             Debug.Log("Check remaining enemies called");
             if (currentEnemyNumber <= 0)
