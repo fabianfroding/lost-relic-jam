@@ -39,6 +39,7 @@ public class Explosive : MonoBehaviour
     private void OnMouseEnter()
     {
         spriteRenderer.material.color = Color.cyan;
+        OnMouseHoverEnter();
     }
 
     private void OnMouseExit()
@@ -51,6 +52,7 @@ public class Explosive : MonoBehaviour
         {
             spriteRenderer.material.color = Color.red;
         }
+        OnMouseHoverExit();
     }
 
     private void OnDrawGizmosSelected()
@@ -165,6 +167,15 @@ public class Explosive : MonoBehaviour
     {
         spriteRenderer.material.color = Color.white;
         isSelected = false;
+    }
+
+    public void OnMouseHoverEnter()
+    {
+       this.transform.GetChild(0).gameObject.SetActive(true);     
+    }
+    public void OnMouseHoverExit()
+    {
+        this.transform.GetChild(0).gameObject.SetActive(false);
     }
 
     private void CheckRbInterpolation()
