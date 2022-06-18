@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5045566741440305044
 RectTransform:
   m_ObjectHideFlags: 0
@@ -160,9 +160,9 @@ GameObject:
   - component: {fileID: 5045566741501279191}
   - component: {fileID: 5045566741501279188}
   - component: {fileID: 5045566741501279189}
-  - component: {fileID: 5045566741501279211}
+  - component: {fileID: 698940366003871113}
   m_Layer: 5
-  m_Name: ShroomsLeftNr
+  m_Name: EnemiesLeftNr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -285,7 +285,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &5045566741501279211
+--- !u!114 &698940366003871113
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -294,10 +294,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5045566741501279184}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 153725c20f51c4b4cb9afa047f91e887, type: 3}
+  m_Script: {fileID: 11500000, guid: 67b5b2cd1655abe4fb062c7a79961223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shroomText: {fileID: 5045566741501279189}
+  enemiesLeftText: {fileID: 5045566741501279189}
 --- !u!1 &5045566741524218392
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,7 +684,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5045566741801212609
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1038,7 +1038,7 @@ GameObject:
   - component: {fileID: 5045566742507438513}
   - component: {fileID: 5045566742507438514}
   m_Layer: 5
-  m_Name: ShroomsLeftText
+  m_Name: EnemiesLeftText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1092,7 +1092,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: unexploded shrooms
+  m_text: enemies left
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d1ac44cb7511bd94daa6ceb0b193aaca, type: 2}
   m_sharedMaterial: {fileID: 190291264461917513, guid: d1ac44cb7511bd94daa6ceb0b193aaca, type: 2}
@@ -1524,6 +1524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shroomsLeft: {fileID: 5045566741501279189}
+  enemiesLeft: {fileID: 5045566741501279189}
 --- !u!1 &5045566742969212264
 GameObject:
   m_ObjectHideFlags: 0
