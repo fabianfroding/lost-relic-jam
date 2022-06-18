@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public float remainingGameoverTimeout;
     public const float gameoverTimeoutDelay = 5f;
     private Coroutine gameoverTimeoutCoroutine = null;
+    public int countdown {get; private set;}
 
     public GameObject scoreUI;
     public GameObject levelFinishedUI;
@@ -99,12 +100,11 @@ public class GameManager : MonoBehaviour
         // yield return new WaitForSeconds(gameoverTimeoutDelay);
 
         // this nightmare is simply used to get the time for printing the lose timeout seconds
-        int countdown = 0;
         int prevCountdown = 0;
 
         for(remainingGameoverTimeout = gameoverTimeoutDelay; remainingGameoverTimeout > 0; remainingGameoverTimeout -= Time.deltaTime)
         {
-            if (remainingGameoverTimeout <= 3.5f)
+            if (remainingGameoverTimeout <= 4f)
             {
                 countdown = Mathf.FloorToInt(remainingGameoverTimeout % 60);
                 if (countdown != prevCountdown) 
