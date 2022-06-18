@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
     public GameObject scoreUI;
     public GameObject levelFinishedUI;
 
-
     // hard coded scene name to the next level
     public string nextlevel;
     // progression - tells which level player can access
