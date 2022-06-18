@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3016018574883851715}
   - component: {fileID: 3016018574883851714}
   - component: {fileID: 3016018574883851716}
-  - component: {fileID: 3016018574883851717}
+  - component: {fileID: 1469762820385588437}
   - component: {fileID: 3016018574883851718}
   m_Layer: 8
   m_Name: Shroom
@@ -108,8 +108,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!70 &3016018574883851717
-CapsuleCollider2D:
+--- !u!58 &1469762820385588437
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -121,9 +121,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.005567486}
-  m_Size: {x: 1, y: 1.966594}
-  m_Direction: 0
+  m_Offset: {x: -0.081305824, y: -0.024391651}
+  serializedVersion: 2
+  m_Radius: 0.77832335
 --- !u!114 &3016018574883851718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ec68f937fb4ba499f3a9808c9db199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactField: 4
+  impactField: 4.25
   impactLayer:
     serializedVersion: 2
     m_Bits: 384
