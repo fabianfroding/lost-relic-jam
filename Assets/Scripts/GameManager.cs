@@ -110,6 +110,7 @@ public class GameManager : MonoBehaviour
                 if (countdown != prevCountdown) 
                 {
                     Debug.Log("Losing in: " + countdown);
+                    Countdown.countdownNumber = countdown;
                     prevCountdown = countdown;
                 }
             }
