@@ -116,14 +116,14 @@ public class GameManager : MonoBehaviour
             }
             yield return null;
         }
-        
-        if (currentShroomNumber <= 0)
-        {
-            CheckRemainingEnemies();
-        }
-        else {
-            LevelFailed();
-        }
+        CheckRemainingEnemies();
+        //if (currentShroomNumber <= 0)
+        //{
+        //    CheckRemainingEnemies();
+        //}
+        //else {
+        //    LevelFailed();
+        //}
     }
 
 
@@ -136,7 +136,7 @@ public class GameManager : MonoBehaviour
     //should check if there are any enemies left, if no level won, if yes level failed but does not work
     private void CheckRemainingEnemies()
     {
-        if (ExplosiveSelect.Instance.hasTriggeredBarrel && currentShroomNumber <= 0)
+        if (ExplosiveSelect.Instance.hasTriggeredBarrel ) 
         {
             Debug.Log("Check remaining enemies called");
             if (currentEnemyNumber <= 0)
