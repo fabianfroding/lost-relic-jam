@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
-    public const int StartHealth = 100;
+    public const int StartHealth = 50;
     int health;
 
     public GameManager gameManager;

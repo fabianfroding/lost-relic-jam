@@ -101,7 +101,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 8
-  m_LinearDrag: 14
+  m_LinearDrag: 20
   m_AngularDrag: 3
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: f2cbe41b95872f94cbbbe67533c2ad00, type: 2}
@@ -122,9 +122,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.114758156, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.8340289
 --- !u!114 &-4049335542305555380
 MonoBehaviour:
   m_ObjectHideFlags: 0
