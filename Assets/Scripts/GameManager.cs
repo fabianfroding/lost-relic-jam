@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     // hard coded scene name to the next level
     public string nextlevel;
     // progression - tells which level player can access
-    public int levelToUnlockIndex = 2;
+    public int levelToUnlockIndex = 2; 
 
     private Explosive[] allShroomsInLevel;
     public int currentShroomNumber;
@@ -116,14 +116,14 @@ public class GameManager : MonoBehaviour
             }
             yield return null;
         }
-        
-        if (currentShroomNumber <= 0)
-        {
-            CheckRemainingEnemies();
-        }
-        else {
-            LevelFailed();
-        }
+        CheckRemainingEnemies();
+        //if (currentShroomNumber <= 0)
+        //{
+        //    CheckRemainingEnemies();
+        //}
+        //else {
+        //    LevelFailed();
+        //}
     }
 
 
@@ -136,7 +136,7 @@ public class GameManager : MonoBehaviour
     //should check if there are any enemies left, if no level won, if yes level failed but does not work
     private void CheckRemainingEnemies()
     {
-        if (ExplosiveSelect.Instance.hasTriggeredBarrel && currentShroomNumber <= 0)
+        if (ExplosiveSelect.Instance.hasTriggeredBarrel ) 
         {
             Debug.Log("Check remaining enemies called");
             if (currentEnemyNumber <= 0)
@@ -162,8 +162,8 @@ public class GameManager : MonoBehaviour
         scoreUI.SetActive(false);
         levelFinishedUI.SetActive(true);
         Debug.Log("LevelPassed");
-
-       PlayerPrefs.SetInt("levelReached", levelToUnlockIndex);
+        Debug.Log(levelToUnlockIndex);
+        PlayerPrefs.SetInt("levelReached", levelToUnlockIndex);
        /* SceneManager.LoadScene(nextlevel);*/
     }
 

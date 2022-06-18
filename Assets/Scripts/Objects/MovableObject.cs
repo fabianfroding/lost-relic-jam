@@ -41,9 +41,12 @@ public class MovableObject : MonoBehaviour
         // if hit enemy, deal damage
         if (other.gameObject.CompareTag(EditorConstants.TAG_ENEMY))
         {
-            Enemy enemy = other.gameObject.GetComponent<Enemy>();
-            // Debug.Log(GetDamage());
-            enemy.Hit(GetDamage());
+            if (ExplosiveSelect.Instance.hasTriggeredBarrel)
+            {
+                Enemy enemy = other.gameObject.GetComponent<Enemy>();
+                // Debug.Log(GetDamage());
+                enemy.Hit(GetDamage());
+            }
         }
 
         if (other.gameObject.CompareTag(EditorConstants.TAG_EXPLOSIVE))
