@@ -5,7 +5,7 @@ using TMPro;
 
 public class Countdown : MonoBehaviour
 {
-    public GameManager gameManager;
+    public static int countdownNumber;
     public TextMeshProUGUI countdownText;
     
     void Start()
@@ -16,9 +16,9 @@ public class Countdown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.countdown != 0)
+        if (countdownNumber != 0)
         {
-            countdownText.text = gameManager.countdown.ToString();
+            countdownText.text = countdownNumber.ToString();
         }
         else {
             countdownText.text = "";
