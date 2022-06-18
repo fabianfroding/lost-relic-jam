@@ -45,6 +45,7 @@ public class Enemy : MonoBehaviour
         OnEnemyDeath?.Invoke(scoreYield);
         InstantiateDeathVisuals();
         Destroy(gameObject);
+        gameManager.currentEnemyNumber -= 1;
     }
 
     /* public float UpdateHealth(float dist)
