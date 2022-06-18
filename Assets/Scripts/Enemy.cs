@@ -96,4 +96,34 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            int colDamage = 0;
+            float collisionSpeed = collision.relativeVelocity.magnitude;
+            if(collisionSpeed > 5)
+            {
+                colDamage = 25;
+            }
+            else if((collisionSpeed < 5) && (collisionSpeed > 4))
+            {
+                colDamage = 20;
+            }
+            else if ((collisionSpeed < 4) && (collisionSpeed > 3))
+            {
+                colDamage = 15;
+            }
+            else if ((collisionSpeed < 3) && (collisionSpeed > 2))
+            {
+                colDamage = 10;
+            }
+            else if ((collisionSpeed < 2) && (collisionSpeed > 1))
+            {
+                colDamage = 5;
+            }
+            this.Hit(colDamage);
+        }
+    }
+
 }
