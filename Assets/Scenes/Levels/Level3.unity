@@ -2910,6 +2910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shroomsLeft: {fileID: 1938922206}
+  enemiesLeft: {fileID: 0}
 --- !u!1 &722517091
 GameObject:
   m_ObjectHideFlags: 0
@@ -4502,43 +4503,43 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1962252069}
-  - {fileID: 1619961067}
   - {fileID: 501809400}
+  - {fileID: 779098380}
+  - {fileID: 1619961067}
   - {fileID: 180298458}
   - {fileID: 1831811104}
   - {fileID: 1798489358}
+  - {fileID: 184516041}
   - {fileID: 1041578652}
   - {fileID: 1480058900}
   - {fileID: 973570960}
   - {fileID: 1377892959}
+  - {fileID: 1089584820}
   - {fileID: 107742484}
+  - {fileID: 621022614}
   - {fileID: 1260728035}
+  - {fileID: 632841146}
   - {fileID: 468608058}
   - {fileID: 1852268520}
-  - {fileID: 1089584820}
   - {fileID: 856449765}
-  - {fileID: 556440265}
-  - {fileID: 779098380}
-  - {fileID: 489542771}
-  - {fileID: 548814914}
-  - {fileID: 1984901967}
-  - {fileID: 2112471293}
-  - {fileID: 148286996}
-  - {fileID: 221995653}
   - {fileID: 841429327}
-  - {fileID: 1424242113}
-  - {fileID: 621022614}
+  - {fileID: 556440265}
+  - {fileID: 489542771}
+  - {fileID: 2112471293}
+  - {fileID: 548814914}
+  - {fileID: 148286996}
+  - {fileID: 1984901967}
+  - {fileID: 221995653}
+  - {fileID: 822146132}
+  - {fileID: 824596868}
   - {fileID: 445953785}
-  - {fileID: 632841146}
-  - {fileID: 184516041}
+  - {fileID: 1424242113}
   - {fileID: 160876345}
   - {fileID: 679670309}
-  - {fileID: 504774618}
-  - {fileID: 824596868}
   - {fileID: 1876544906}
-  - {fileID: 822146132}
-  - {fileID: 883124114}
+  - {fileID: 504774618}
   - {fileID: 1101262922}
+  - {fileID: 883124114}
   - {fileID: 1942333507}
   - {fileID: 1299778550}
   m_Father: {fileID: 1099091482}
@@ -5602,6 +5603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153725c20f51c4b4cb9afa047f91e887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InitialShroomNr: 10
   shroomText: {fileID: 1287307185}
 --- !u!1001 &1299778549
 PrefabInstance:
@@ -8323,6 +8325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153725c20f51c4b4cb9afa047f91e887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InitialShroomNr: 6
   shroomText: {fileID: 1938922206}
 --- !u!1001 &1942333506
 PrefabInstance:

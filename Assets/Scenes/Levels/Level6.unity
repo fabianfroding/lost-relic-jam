@@ -3534,6 +3534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shroomsLeft: {fileID: 1938922206}
+  enemiesLeft: {fileID: 0}
 --- !u!1 &722517091
 GameObject:
   m_ObjectHideFlags: 0
@@ -5185,36 +5186,36 @@ Transform:
   - {fileID: 1789226982}
   - {fileID: 304340313}
   - {fileID: 2014789265}
-  - {fileID: 1866754455}
   - {fileID: 600532648}
+  - {fileID: 1866754455}
   - {fileID: 88990313}
   - {fileID: 792141425}
-  - {fileID: 1921501313}
   - {fileID: 922891331}
   - {fileID: 2061111640}
+  - {fileID: 1921501313}
   - {fileID: 1359060374}
   - {fileID: 1108408857}
   - {fileID: 1009657698}
-  - {fileID: 700470805}
   - {fileID: 1223388467}
+  - {fileID: 700470805}
   - {fileID: 1737702007}
   - {fileID: 1032130515}
   - {fileID: 650702932}
   - {fileID: 1026706603}
+  - {fileID: 664309473}
   - {fileID: 129740523}
   - {fileID: 1400440310}
   - {fileID: 812999318}
   - {fileID: 2100879719}
   - {fileID: 350756824}
-  - {fileID: 664309473}
   - {fileID: 2137410777}
   - {fileID: 1507204602}
   - {fileID: 234342035}
   - {fileID: 71013312}
-  - {fileID: 623932632}
   - {fileID: 663650171}
-  - {fileID: 197152939}
+  - {fileID: 623932632}
   - {fileID: 841113880}
+  - {fileID: 197152939}
   - {fileID: 946293616}
   - {fileID: 654408821}
   - {fileID: 1199555734}
@@ -5919,6 +5920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153725c20f51c4b4cb9afa047f91e887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InitialShroomNr: 13
   shroomText: {fileID: 1287307185}
 --- !u!1001 &1323534526
 PrefabInstance:
@@ -8534,6 +8536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153725c20f51c4b4cb9afa047f91e887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InitialShroomNr: 6
   shroomText: {fileID: 1938922206}
 --- !u!1 &1949824670
 GameObject:

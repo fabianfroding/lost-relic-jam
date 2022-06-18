@@ -3905,6 +3905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shroomsLeft: {fileID: 1938922206}
+  enemiesLeft: {fileID: 0}
 --- !u!1001 &716359032
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6979,6 +6980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153725c20f51c4b4cb9afa047f91e887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InitialShroomNr: 8
   shroomText: {fileID: 1287307185}
 --- !u!1001 &1304070323
 PrefabInstance:
@@ -10141,6 +10143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153725c20f51c4b4cb9afa047f91e887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InitialShroomNr: 6
   shroomText: {fileID: 1938922206}
 --- !u!1 &1949824670
 GameObject:
