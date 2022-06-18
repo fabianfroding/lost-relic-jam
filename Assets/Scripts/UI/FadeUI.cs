@@ -15,6 +15,11 @@ public class FadeUI : MonoBehaviour
         targetUIGroup = GetComponent<CanvasGroup>();
     }
 
+    private void Start()
+    {
+        PlaceShrooms.OnShroomPlaceError += OnShroomPlaceError;
+    }
+
     private void Update()
     {
         if (fadeIn)
@@ -42,6 +47,12 @@ public class FadeUI : MonoBehaviour
         }
     }
 
+    private void OnShroomPlaceError()
+    {
+        ShowUI();
+        FadeOutUI();
+    }
+
     public void ShowUI()
     {
         targetUIGroup.alpha = 1;   
@@ -60,5 +71,10 @@ public class FadeUI : MonoBehaviour
     public void FadeOutUI()
     {
         fadeOut = true;
+    }
+
+    void OnDestroy()
+    {
+        PlaceShrooms.OnShroomPlaceError -= OnShroomPlaceError;
     }
 }

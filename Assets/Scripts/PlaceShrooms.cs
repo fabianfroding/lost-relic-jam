@@ -12,6 +12,7 @@ public class PlaceShrooms : MonoBehaviour
     public GameObject shroomPlacementErrorUI;
 
 
+    public static event Action OnShroomPlaceError;
     public static event Action OnShroomPlaced;
 
     // Start is called before the first frame update
@@ -41,8 +42,9 @@ public class PlaceShrooms : MonoBehaviour
         {
             Debug.Log("Place in an empty area.");
             shroomPlacementErrorUI.SetActive(true);
-            shroomPlacementErrorUI.GetComponent<FadeUI>().ShowUI();
-            shroomPlacementErrorUI.GetComponent<FadeUI>().FadeOutUI();
+            OnShroomPlaceError?.Invoke();
+            // shroomPlacementErrorUI.GetComponent<FadeUI>().ShowUI();
+            // shroomPlacementErrorUI.GetComponent<FadeUI>().FadeOutUI();
         }
         else {
             if (explosiveSelect.hasInfiniteTriggers || !explosiveSelect.hasTriggeredBarrel)
