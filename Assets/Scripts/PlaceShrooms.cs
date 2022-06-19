@@ -41,7 +41,7 @@ public class PlaceShrooms : MonoBehaviour
         if (detectedObject)
         {
             Debug.Log("Place in an empty area.");
-            shroomPlacementErrorUI.SetActive(true);
+            // shroomPlacementErrorUI.SetActive(true);
             OnShroomPlaceError?.Invoke();
             // shroomPlacementErrorUI.GetComponent<FadeUI>().ShowUI();
             // shroomPlacementErrorUI.GetComponent<FadeUI>().FadeOutUI();

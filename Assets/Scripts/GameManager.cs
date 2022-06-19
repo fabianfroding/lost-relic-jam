@@ -136,9 +136,14 @@ public class GameManager : MonoBehaviour
     //should check if there are any enemies left, if no level won, if yes level failed but does not work
     private void CheckRemainingEnemies()
     {
-        if (ExplosiveSelect.Instance.hasTriggeredBarrel ) 
+        if (ExplosiveSelect.Instance.hasTriggeredBarrel) 
         {
             Debug.Log("Check remaining enemies called");
+
+            // Slower, basically overrides OnEnemyDeath() completely
+            allEnemiesInLevel = FindObjectsOfType<Enemy>();
+            currentEnemyNumber = allEnemiesInLevel.Length;
+
             if (currentEnemyNumber <= 0)
             {
                 LevelWon();
