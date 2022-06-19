@@ -139,9 +139,11 @@ public class GameManager : MonoBehaviour
         if (ExplosiveSelect.Instance.hasTriggeredBarrel) 
         {
             Debug.Log("Check remaining enemies called");
+
+            // Slower, basically overrides OnEnemyDeath() completely
             allEnemiesInLevel = FindObjectsOfType<Enemy>();
             currentEnemyNumber = allEnemiesInLevel.Length;
-            
+
             if (currentEnemyNumber <= 0)
             {
                 LevelWon();
