@@ -1269,7 +1269,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1034355815
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1623,8 +1623,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Made by:\nFabian Fr\xF6ding\nHelga Budai-Bed\u0151\nNigel Chao\nRivindu
-    Wickramarachi\n\nBackground:\nhttps://creator.nightcafe.studio/creation/ohpC5XwXnEh4pkKRqrVD\nMusic:\nhttps://www.purple-planet.com/\nSFX:\nhttps://wiki.spectralcoding.com/info:lol_sound_pages:teemo_-_default\nhttps://www.sounds-resource.com/pc_computer/warcraftiiireignofchaosthefrozenthrone/sound/31976/
+  m_text: "Made by:\nFabian Fr\xF6ding - Art, Programming, Music/SFX\nHelga Budai-Bed\u0151
+    - UI, Programming, Level Design\nNigel Chao - Programming, Game/Level Design\nRivindu
+    Wickramarachi - Programming, Level Design\n\nBackground:\nhttps://creator.nightcafe.studio/creation/ohpC5XwXnEh4pkKRqrVD\nMusic:\nhttps://www.purple-planet.com/\nSFX:\nhttps://wiki.spectralcoding.com/info:lol_sound_pages:teemo_-_default\nhttps://www.sounds-resource.com/pc_computer/warcraftiiireignofchaosthefrozenthrone/sound/31976/
     \n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
